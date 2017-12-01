@@ -38,30 +38,15 @@ class Staff {
   public $age;
   public $salary;
 
-  public function __construct($staff) {
-    $this->id = $_GET['id'] ?? null;
-   if ($this->id) {
-     $id = (int) $this->id;
-        if ($id >= 1 && $id <= count($staff)) {
-         $this->name = $staff[$this->id]['name'];
-         $this->lastname = $staff[$this->id ]['lastname'];
-         $this->email = $staff[$this->id ]['email'];
-         $this->bday = $staff[$this->id ]['bday'];
-         $this->age = $staff[$this->id ]['age'];
-         $this->salary = $staff[$this->id]['salary'];
-         $this->printStaff();
-       } else {
-         echo "Error: Incorrect ID!";
-       }
-   } else if (count($_GET) !== 0) {
-      echo "Error: Unknown URL parameter!";
-    } else {
-     foreach ($staff as $employee) {
-       $format ="%s %s<br>Email: %s <br>Birthday: %s <br>Age: %s <br>Salary: $%s<br><br>";
-       printf($format, $employee['name'], $employee['lastname'], $employee['email'], $employee['bday'], $employee['age'], $employee['salary']);
-     }
-   }
-  }
+public function __construct(array $staff)
+    {
+        $this->name = $staff[$this->id]['name'];
+        $this->lastname = $staff[$this->id]['lastname'];
+        $this->email = $staff[$this->id]['email'];
+        $this->bday = $staff[$this->id]['bday'];
+        $this->age = $staff[$this->id]['age'];
+        $this->salary = $staff[$this->id]['salary'];
+    }
 
   public function printStaff() {
     $format ="%s %s<br>Email: %s <br>Birthday: %s <br>Age: %s <br>Salary: $%s<br><br>";
